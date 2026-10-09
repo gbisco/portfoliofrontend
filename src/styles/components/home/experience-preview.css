@@ -1,0 +1,134 @@
+.experience-preview {
+  position: relative;
+
+  width: 100%;
+  overflow: hidden;
+
+  color: var(--color-text);
+  background: var(--color-bg);
+}
+
+.experience-preview__background {
+  position: absolute;
+  inset: 0;
+
+  background:
+    radial-gradient(
+      circle at 75% 20%,
+      var(--glass-dark-background),
+      transparent 42%
+    ),
+    var(--color-bg);
+}
+
+.experience-preview__inner {
+  position: relative;
+  z-index: 1;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: clamp(
+    var(--space-4xl),
+    6vw,
+    var(--space-6xl)
+  );
+
+  padding-top: clamp(
+    var(--space-4xl),
+    8vw,
+    var(--space-5xl)
+  );
+
+  padding-bottom: clamp(
+    var(--space-6xl),
+    12vw,
+    var(--space-7xl)
+  );
+}
+
+.experience-preview__header {
+  display: flex;
+  align-items: flex-start;
+}
+
+.experience-preview__heading {
+  max-width: 48rem;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: var(--space-sm);
+}
+
+.experience-preview__eyebrow {
+  margin: 0;
+
+  color: var(--color-text-muted);
+
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.experience-preview__title {
+  margin: 0;
+
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  line-height: 1.05;
+  letter-spacing: -0.04em;
+}
+
+.experience-preview__description {
+  max-width: 38rem;
+  margin: 0;
+
+  color: var(--color-text-muted);
+
+  font-size: var(--font-size-lg);
+  line-height: 1.6;
+}
+
+.experience-preview__actions {
+  display: flex;
+  align-items: center;
+
+  margin-top: var(--space-lg);
+}
+
+/* Timeline glass container */
+.experience-preview__timeline {
+  width: 100%;
+
+  padding: clamp(
+    var(--space-xl),
+    4vw,
+    var(--space-3xl)
+  );
+
+  border: 1px solid var(--glass-dark-border);
+  border-radius: var(--radius-xl);
+
+  background: var(--glass-dark-background);
+
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+
+  box-shadow: var(--glass-shadow);
+}
+
+@media (max-width: 767px) {
+  .experience-preview__header {
+    align-items: flex-start;
+  }
+
+  .experience-preview__title {
+    font-size: var(--font-size-2xl);
+  }
+
+  .experience-preview__timeline {
+    padding: var(--space-xl);
+  }
+}

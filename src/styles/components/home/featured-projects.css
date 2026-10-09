@@ -1,0 +1,732 @@
+.featured-projects {
+  position: relative;
+
+  width: 100%;
+  overflow: hidden;
+}
+
+/* Background layer behind the frosted surface */
+.featured-projects__background {
+  position: absolute;
+  inset: 0;
+
+  background: var(--color-bg-soft);
+}
+
+/* Full-width frosted white surface */
+.featured-projects__frost {
+  position: relative;
+  z-index: 1;
+
+  width: 100%;
+
+  padding-top: clamp(
+    var(--space-4xl),
+    8vw,
+    var(--space-5xl)
+  );
+
+  padding-bottom: clamp(
+    var(--space-5xl),
+    10vw,
+    var(--space-6xl)
+  );
+
+  color: var(--color-text-dark);
+
+  background: var(--glass-light-background);
+
+  border-top: 1px solid var(--glass-light-border);
+  border-bottom: 1px solid var(--glass-light-border);
+
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+}
+
+/* Constrained content */
+.featured-projects__inner {
+  display: flex;
+  flex-direction: column;
+
+  gap: clamp(
+    var(--space-4xl),
+    7vw,
+    var(--space-5xl)
+  );
+}
+
+.featured-projects__header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  gap: var(--space-lg);
+}
+
+.featured-projects__heading {
+  display: flex;
+  flex-direction: column;
+
+  gap: var(--space-sm);
+}
+
+.featured-projects__eyebrow {
+  margin: 0;
+
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.featured-projects__title {
+  margin: 0;
+
+  font-size: var(--font-size-3xl);
+  line-height: 1;
+  letter-spacing: -0.04em;
+}
+
+.featured-projects__description {
+  max-width: 40rem;
+  margin: 0;
+
+  color: var(--color-text-muted);
+
+  font-size: var(--font-size-lg);
+  line-height: 1.6;
+}
+
+/* Carousel */
+.featured-projects__carousel {
+  position: relative;
+
+  width: 100%;
+  height: clamp(21rem, 28vw, 28rem);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/*
+ * Five rendered positions:
+ *
+ * -2  -1   0   +1  +2
+ *
+ * The outer cards already exist offscreen so they can
+ * enter while another card leaves.
+ */
+.featured-projects__viewport {
+  position: relative;
+
+  width: 100%;
+  height: 100%;
+
+  overflow: hidden;
+}
+
+.featured-projects__track {
+  position: relative;
+
+  width: 100%;
+  height: 100%;
+}
+
+/*
+ * IMPORTANT:
+ *
+ * The slide controls POSITION only.
+ * ProjectCard controls SCALE.
+ *
+ * Keeping those transforms separate prevents scaling from
+ * affecting the apparent horizontal path of the card.
+ */
+.featured-projects__track-slide {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  width: clamp(38rem, 48vw, 51.25rem);
+
+  margin: 0;
+  padding: 0;
+
+  border: 0;
+
+  background: transparent;
+
+  appearance: none;
+
+  transition:
+    transform 800ms cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 800ms ease,
+    filter 800ms ease;
+}
+
+.featured-projects__track-slide > .project-card {
+  margin-inline: auto;
+
+  transform-origin: center;
+
+  transition:
+    transform 800ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Active / center */
+.featured-projects__track-slide--active {
+  z-index: 3;
+
+  transform: translate(-50%, -50%);
+
+  opacity: 1;
+  filter: blur(0);
+}
+
+.featured-projects__track-slide--active > .project-card {
+  transform: scale(1);
+}
+
+/* Immediate previous */
+.featured-projects__track-slide--negative-1 {
+  z-index: 2;
+
+  transform: translate(-150%, -50%);
+
+  opacity: 0.38;
+  filter: blur(2px);
+
+  cursor: pointer;
+}
+
+.featured-projects__track-slide--negative-1 > .project-card {
+  transform: scale(0.52);
+}
+
+/* Immediate next */
+.featured-projects__track-slide--positive-1 {
+  z-index: 2;
+
+  transform: translate(50%, -50%);
+
+  opacity: 0.38;
+  filter: blur(2px);
+
+  cursor: pointer;
+}
+
+.featured-projects__track-slide--positive-1 > .project-card {
+  transform: scale(0.52);
+}
+
+/* Hidden card waiting beyond the left edge */
+.featured-projects__track-slide--negative-2 {
+  z-index: 1;
+
+  transform: translate(-225%, -50%);
+
+  opacity: 0;
+  filter: blur(3px);
+
+  pointer-events: none;
+}
+
+.featured-projects__track-slide--negative-2 > .project-card {
+  transform: scale(0.42);
+}
+
+/* Hidden card waiting beyond the right edge */
+.featured-projects__track-slide--positive-2 {
+  z-index: 1;
+
+  transform: translate(125%, -50%);
+
+  opacity: 0;
+  filter: blur(3px);
+
+  pointer-events: none;
+}
+
+.featured-projects__track-slide--positive-2 > .project-card {
+  transform: scale(0.42);
+}
+
+.featured-projects__track-slide--negative-1:hover,
+.featured-projects__track-slide--positive-1:hover {
+  opacity: 0.58;
+  filter: blur(1px);
+}
+
+/*
+ * Move NEXT.
+ *
+ * Position and scale animate independently.
+ */
+.featured-projects__carousel--moving-next
+.featured-projects__track-slide--negative-2 {
+  transform: translate(-300%, -50%);
+
+  opacity: 0;
+}
+
+.featured-projects__carousel--moving-next
+.featured-projects__track-slide--negative-2 > .project-card {
+  transform: scale(0.36);
+}
+
+.featured-projects__carousel--moving-next
+.featured-projects__track-slide--negative-1 {
+  transform: translate(-225%, -50%);
+
+  opacity: 0;
+  filter: blur(3px);
+}
+
+.featured-projects__carousel--moving-next
+.featured-projects__track-slide--negative-1 > .project-card {
+  transform: scale(0.42);
+}
+
+.featured-projects__carousel--moving-next
+.featured-projects__track-slide--active {
+  z-index: 2;
+
+  transform: translate(-150%, -50%);
+
+  opacity: 0.38;
+  filter: blur(2px);
+}
+
+.featured-projects__carousel--moving-next
+.featured-projects__track-slide--active > .project-card {
+  transform: scale(0.52);
+}
+
+.featured-projects__carousel--moving-next
+.featured-projects__track-slide--positive-1 {
+  z-index: 4;
+
+  transform: translate(-50%, -50%);
+
+  opacity: 1;
+  filter: blur(0);
+}
+
+.featured-projects__carousel--moving-next
+.featured-projects__track-slide--positive-1 > .project-card {
+  transform: scale(1);
+}
+
+.featured-projects__carousel--moving-next
+.featured-projects__track-slide--positive-2 {
+  z-index: 2;
+
+  transform: translate(50%, -50%);
+
+  opacity: 0.38;
+  filter: blur(2px);
+}
+
+.featured-projects__carousel--moving-next
+.featured-projects__track-slide--positive-2 > .project-card {
+  transform: scale(0.52);
+}
+
+/*
+ * Move PREVIOUS.
+ */
+.featured-projects__carousel--moving-previous
+.featured-projects__track-slide--positive-2 {
+  transform: translate(200%, -50%);
+
+  opacity: 0;
+}
+
+.featured-projects__carousel--moving-previous
+.featured-projects__track-slide--positive-2 > .project-card {
+  transform: scale(0.36);
+}
+
+.featured-projects__carousel--moving-previous
+.featured-projects__track-slide--positive-1 {
+  transform: translate(125%, -50%);
+
+  opacity: 0;
+  filter: blur(3px);
+}
+
+.featured-projects__carousel--moving-previous
+.featured-projects__track-slide--positive-1 > .project-card {
+  transform: scale(0.42);
+}
+
+.featured-projects__carousel--moving-previous
+.featured-projects__track-slide--active {
+  z-index: 2;
+
+  transform: translate(50%, -50%);
+
+  opacity: 0.38;
+  filter: blur(2px);
+}
+
+.featured-projects__carousel--moving-previous
+.featured-projects__track-slide--active > .project-card {
+  transform: scale(0.52);
+}
+
+.featured-projects__carousel--moving-previous
+.featured-projects__track-slide--negative-1 {
+  z-index: 4;
+
+  transform: translate(-50%, -50%);
+
+  opacity: 1;
+  filter: blur(0);
+}
+
+.featured-projects__carousel--moving-previous
+.featured-projects__track-slide--negative-1 > .project-card {
+  transform: scale(1);
+}
+
+.featured-projects__carousel--moving-previous
+.featured-projects__track-slide--negative-2 {
+  z-index: 2;
+
+  transform: translate(-150%, -50%);
+
+  opacity: 0.38;
+  filter: blur(2px);
+}
+
+.featured-projects__carousel--moving-previous
+.featured-projects__track-slide--negative-2 > .project-card {
+  transform: scale(0.52);
+}
+
+/*
+ * Shared responsive width for the active card
+ * and the information panel below it.
+ */
+.featured-projects__stage {
+  width: clamp(38rem, 48vw, 51.25rem);
+  max-width: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Stable project information slot */
+.featured-projects__project-info {
+  width: clamp(38rem, 48vw, 51.25rem);
+  max-width: 100%;
+  height: 18rem;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+
+  gap: var(--space-lg);
+
+  margin-inline: auto;
+}
+
+/* Carousel arrows */
+.featured-projects__arrow {
+  position: absolute;
+  top: 50%;
+  z-index: 10;
+
+  width: 3rem;
+  height: 3rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0;
+
+  border: 1px solid var(--color-border-dark);
+  border-radius: var(--radius-pill);
+
+  background: var(--glass-light-background);
+
+  cursor: pointer;
+
+  transform: translateY(-50%);
+
+  transition:
+    transform var(--transition-fast),
+    opacity var(--transition-fast),
+    background var(--transition-fast);
+}
+
+.featured-projects__arrow--left {
+  left: var(--space-lg);
+}
+
+.featured-projects__arrow--right {
+  right: var(--space-lg);
+}
+
+.featured-projects__arrow img {
+  width: 1rem;
+  height: 1rem;
+}
+
+.featured-projects__arrow:hover:not(:disabled) {
+  transform: translateY(-50%) scale(1.06);
+}
+
+.featured-projects__arrow:disabled {
+  opacity: 0.25;
+  cursor: default;
+}
+
+/* Carousel position indicators */
+.featured-projects__indicators {
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: var(--space-xs);
+}
+
+.featured-projects__indicator {
+  width: 0.5rem;
+  height: 0.5rem;
+
+  flex: 0 0 auto;
+
+  padding: 0;
+
+  border: 0;
+  border-radius: var(--radius-pill);
+
+  background: var(--color-text-muted);
+
+  opacity: 0.35;
+
+  cursor: pointer;
+  appearance: none;
+
+  transition:
+    opacity var(--transition-fast),
+    transform var(--transition-fast);
+}
+
+.featured-projects__indicator:hover:not(:disabled) {
+  opacity: 0.65;
+}
+
+.featured-projects__indicator:disabled {
+  cursor: default;
+}
+
+.featured-projects__indicator--active {
+  background: var(--color-text-dark);
+
+  opacity: 1;
+
+  transform: scale(1.1);
+}
+
+/*
+ * Tablet / narrow desktop.
+ *
+ * No depth scaling here. Cards stay full-size and simply
+ * slide horizontally.
+ */
+@media (max-width: 1100px) {
+  .featured-projects__frost {
+    padding-top: var(--space-4xl);
+    padding-bottom: var(--space-4xl);
+  }
+
+  .featured-projects__inner {
+    gap: var(--space-3xl);
+  }
+
+  .featured-projects__stage,
+  .featured-projects__project-info {
+    width: min(100%, 46rem);
+  }
+
+  .featured-projects__project-info {
+    height: 20rem;
+  }
+
+  .featured-projects__track-slide {
+    width: min(calc(100% - 5rem), 46rem);
+  }
+
+  .featured-projects__track-slide > .project-card {
+    transform: scale(1);
+  }
+
+  .featured-projects__track-slide--negative-1,
+  .featured-projects__track-slide--positive-1,
+  .featured-projects__track-slide--negative-2,
+  .featured-projects__track-slide--positive-2 {
+    opacity: 0;
+    filter: none;
+    pointer-events: none;
+  }
+
+  .featured-projects__track-slide--negative-1 {
+    transform: translate(-145%, -50%);
+  }
+
+  .featured-projects__track-slide--positive-1 {
+    transform: translate(45%, -50%);
+  }
+
+  /* NEXT */
+  .featured-projects__carousel--moving-next
+  .featured-projects__track-slide--active {
+    transform: translate(-145%, -50%);
+
+    opacity: 0;
+    filter: none;
+  }
+
+  .featured-projects__carousel--moving-next
+  .featured-projects__track-slide--positive-1 {
+    z-index: 4;
+
+    transform: translate(-50%, -50%);
+
+    opacity: 1;
+    filter: none;
+  }
+
+  /* PREVIOUS */
+  .featured-projects__carousel--moving-previous
+  .featured-projects__track-slide--active {
+    transform: translate(45%, -50%);
+
+    opacity: 0;
+    filter: none;
+  }
+
+  .featured-projects__carousel--moving-previous
+  .featured-projects__track-slide--negative-1 {
+    z-index: 4;
+
+    transform: translate(-50%, -50%);
+
+    opacity: 1;
+    filter: none;
+  }
+
+  /*
+   * Override all desktop scale changes while the tablet
+   * carousel is moving.
+   */
+  .featured-projects__carousel--moving-next
+  .featured-projects__track-slide > .project-card,
+  .featured-projects__carousel--moving-previous
+  .featured-projects__track-slide > .project-card {
+    transform: scale(1);
+  }
+
+  .featured-projects__arrow--left {
+    left: var(--space-sm);
+  }
+
+  .featured-projects__arrow--right {
+    right: var(--space-sm);
+  }
+}
+
+/* Mobile */
+@media (max-width: 767px) {
+  .featured-projects__frost {
+    padding-top: var(--space-3xl);
+    padding-bottom: var(--space-3xl);
+  }
+
+  .featured-projects__inner {
+    gap: var(--space-2xl);
+  }
+
+  .featured-projects__carousel {
+    height: 20rem;
+    min-height: 0;
+  }
+
+  .featured-projects__viewport {
+    height: 100%;
+  }
+
+  .featured-projects__stage,
+  .featured-projects__project-info {
+    width: 100%;
+  }
+
+  .featured-projects__project-info {
+    height: auto;
+  }
+
+  .featured-projects__track-slide {
+    width: calc(100% - 3rem);
+  }
+
+  /*
+   * Mobile stays completely flat.
+   * Only horizontal position changes.
+   */
+  .featured-projects__track-slide > .project-card {
+    transform: scale(1);
+  }
+
+  .featured-projects__track-slide--negative-1 {
+    transform: translate(-150%, -50%);
+  }
+
+  .featured-projects__track-slide--positive-1 {
+    transform: translate(50%, -50%);
+  }
+
+  .featured-projects__carousel--moving-next
+  .featured-projects__track-slide--active {
+    transform: translate(-150%, -50%);
+  }
+
+  .featured-projects__carousel--moving-previous
+  .featured-projects__track-slide--active {
+    transform: translate(50%, -50%);
+  }
+
+  .featured-projects__arrow {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+
+  .featured-projects__arrow--left {
+    left: var(--space-xs);
+  }
+
+  .featured-projects__arrow--right {
+    right: var(--space-xs);
+  }
+
+  .featured-projects__arrow img {
+    width: 0.875rem;
+    height: 0.875rem;
+  }
+}
+
+/* Respect reduced-motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .featured-projects__track-slide,
+  .featured-projects__track-slide > .project-card {
+    transition: none;
+  }
+}

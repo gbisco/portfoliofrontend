@@ -1,0 +1,180 @@
+.experience-timeline {
+  position: relative;
+
+  width: 100%;
+  min-height: 28rem;
+}
+
+.experience-timeline__line {
+  position: absolute;
+  top: 50%;
+  left: 0;
+
+  width: 100%;
+  height: 2px;
+
+  background: var(--timeline-line);
+  transform: translateY(-50%);
+}
+
+.experience-timeline__items {
+  position: relative;
+
+  width: 100%;
+  min-height: 28rem;
+
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+}
+
+.experience-timeline__item {
+  position: relative;
+
+  min-width: 0;
+  height: 28rem;
+
+  display: flex;
+  justify-content: center;
+}
+
+.experience-timeline__point {
+  position: absolute;
+  top: 50%;
+  left: 0;
+
+  width: 0.8rem;
+  height: 0.8rem;
+
+  border: 2px solid var(--timeline-point-border);
+  border-radius: 50%;
+
+  background: var(--color-bg);
+
+  transform: translate(-50%, -50%);
+  z-index: 2;
+}
+
+.experience-timeline__content {
+  position: absolute;
+  left: 0;
+
+  width: calc(100% - var(--space-lg));
+
+  display: flex;
+  flex-direction: column;
+
+  gap: var(--space-xs);
+}
+
+/*
+ * Above and below items keep the same content order.
+ * Only their position relative to the timeline changes.
+ */
+.experience-timeline__item--above .experience-timeline__content {
+  bottom: calc(50% + var(--space-xl));
+}
+
+.experience-timeline__item--below .experience-timeline__content {
+  top: calc(50% + var(--space-xl));
+}
+
+.experience-timeline__period {
+  margin: 0;
+
+  color: var(--color-text-muted);
+
+  font-size: var(--font-size-sm);
+  line-height: 1.4;
+}
+
+.experience-timeline__heading {
+  display: flex;
+  flex-direction: column;
+
+  gap: var(--space-xs);
+}
+
+.experience-timeline__title {
+  margin: 0;
+
+  color: var(--color-text);
+
+  font-size: var(--font-size-base);
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.experience-timeline__organization {
+  margin: 0;
+
+  color: var(--color-text);
+
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.experience-timeline__headline {
+  margin: var(--space-xs) 0 0;
+
+  color: var(--color-text-muted);
+
+  font-size: var(--font-size-sm);
+  line-height: 1.55;
+}
+
+/*
+ * Tablet and mobile become a vertical timeline.
+ */
+@media (max-width: 1100px) {
+  .experience-timeline {
+    min-height: 0;
+  }
+
+  .experience-timeline__line {
+    top: 0;
+    bottom: 0;
+    left: 0;
+
+    width: 2px;
+    height: auto;
+
+    transform: none;
+  }
+
+  .experience-timeline__items {
+    min-height: 0;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: var(--space-2xl);
+  }
+
+  .experience-timeline__item {
+    height: auto;
+
+    display: block;
+
+    padding-left: var(--space-xl);
+  }
+
+  .experience-timeline__point {
+    top: 0;
+    left: 0;
+
+    transform: translate(-50%, 0);
+  }
+
+  .experience-timeline__content,
+  .experience-timeline__item--above .experience-timeline__content,
+  .experience-timeline__item--below .experience-timeline__content {
+    position: static;
+
+    width: 100%;
+  }
+
+  .experience-timeline__headline {
+    max-width: 28rem;
+  }
+}

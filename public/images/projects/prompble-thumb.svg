@@ -1,0 +1,48 @@
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 72 64"
+  role="img"
+  aria-labelledby="prompble-logo-title"
+>
+  <title id="prompble-logo-title">Prompble</title>
+
+  <!-- P -->
+  <path
+    fill="#1f2d56"
+    fill-rule="evenodd"
+    d="
+      M8 8
+      H32
+      C44 8 51 15 51 26
+      C51 37 44 44 32 44
+      H20
+      V56
+      H8
+      Z
+
+      M20 18
+      V34
+      H31
+      C37 34 40 31 40 26
+      C40 21 37 18 31 18
+      Z
+    "
+  />
+
+  <!-- ! -->
+  <rect
+    x="56"
+    y="8"
+    width="8"
+    height="36"
+    rx="4"
+    fill="#1f2d56"
+  />
+
+  <circle
+    cx="60"
+    cy="53"
+    r="4"
+    fill="#1f2d56"
+  />
+</svg>

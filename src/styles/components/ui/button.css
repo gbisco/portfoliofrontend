@@ -1,0 +1,87 @@
+.button {
+  min-height: 44px;
+  padding-inline: var(--space-lg);
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-xs);
+
+  border: 1px solid transparent;
+  border-radius: var(--radius-pill);
+
+  font-weight: 600;
+  line-height: 1;
+
+  cursor: pointer;
+
+  transition:
+    background var(--transition-fast),
+    border-color var(--transition-fast),
+    color var(--transition-fast),
+    transform var(--transition-fast);
+}
+
+/* Solid primary */
+
+.button--primary.button--solid {
+  color: var(--color-primary-text);
+  background: var(--color-primary);
+}
+
+.button--primary.button--solid:hover {
+  background: var(--color-primary-hover);
+}
+
+/* Solid secondary */
+
+.button--secondary.button--solid {
+  color: var(--color-secondary-text);
+  background: var(--color-secondary);
+}
+
+.button--secondary.button--solid:hover {
+  background: var(--color-secondary-hover);
+}
+
+/* Glass primary */
+
+.button--primary.button--glass {
+  color: var(--color-text);
+  background: var(--glass-primary-background);
+  border-color: var(--glass-primary-border);
+}
+
+.button--primary.button--glass:hover {
+  background: var(--glass-primary-hover);
+}
+
+/* Glass secondary */
+
+.button--secondary.button--glass {
+  color: var(--color-text);
+  background: var(--glass-secondary-background);
+  border-color: var(--glass-secondary-border);
+}
+
+.button--secondary.button--glass:hover {
+  background: var(--glass-secondary-hover);
+}
+
+/* Optional blur */
+
+.button--blur {
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+}
+
+/* Shared interaction */
+
+.button:hover {
+  transform: translateY(-1px);
+}
+
+.button:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+}

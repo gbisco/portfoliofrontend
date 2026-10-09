@@ -1,0 +1,153 @@
+.experience-card {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 34%);
+  gap: var(--space-xl);
+  padding: var(--space-lg);
+
+  background: var(--glass-dark-background);
+  border: 1px solid var(--glass-dark-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--glass-shadow);
+
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+
+  overflow: hidden;
+}
+
+.experience-card--no-image {
+  grid-template-columns: 1fr;
+}
+
+
+/* Content */
+
+.experience-card__content {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: var(--space-lg);
+  align-items: start;
+}
+
+.experience-card__details {
+  min-width: 0;
+}
+
+
+/* Logo */
+
+.experience-card__logo {
+  width: 72px;
+  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: var(--space-sm);
+
+  background: var(--color-surface-solid);
+  border-radius: var(--radius-md);
+
+  overflow: hidden;
+}
+
+.experience-card__logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+
+/* Text */
+
+.experience-card__period {
+  margin: 0 0 var(--space-xs);
+
+  color: var(--color-text-muted);
+  font-size: var(--font-size-sm);
+}
+
+.experience-card__heading {
+  margin-bottom: var(--space-lg);
+}
+
+.experience-card__title {
+  margin: 0;
+
+  color: var(--color-text);
+  font-size: var(--font-size-xl);
+  line-height: 1.15;
+}
+
+.experience-card__organization {
+  margin: var(--space-xs) 0 0;
+
+  color: var(--color-text);
+  font-size: var(--font-size-base);
+}
+
+.experience-card__headline {
+  margin: 0 0 var(--space-sm);
+
+  color: var(--color-text);
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.experience-card__description {
+  max-width: 760px;
+  margin: 0;
+
+  color: var(--color-text-muted);
+  line-height: 1.6;
+}
+
+
+/* Image */
+
+.experience-card__image {
+  min-height: 240px;
+
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.experience-card__image img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+}
+
+
+/* Responsive */
+
+@media (max-width: 900px) {
+  .experience-card {
+    grid-template-columns: 1fr;
+  }
+
+  .experience-card__image {
+    min-height: 260px;
+  }
+}
+
+@media (max-width: 600px) {
+  .experience-card {
+    gap: var(--space-lg);
+    padding: var(--space-md);
+  }
+
+  .experience-card__content {
+    grid-template-columns: 1fr;
+  }
+
+  .experience-card__logo {
+    width: 64px;
+    height: 64px;
+  }
+
+  .experience-card__image {
+    min-height: 200px;
+  }
+}

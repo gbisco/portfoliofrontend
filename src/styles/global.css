@@ -43,3 +43,11 @@ a {
 
   margin-inline: auto;
 }
+
+/* Let layouts breathe on very wide displays */
+@media (min-width: 1600px) {
+  .content-container {
+    width: 82vw;
+    max-width: none;
+  }
+}
