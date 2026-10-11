@@ -28,7 +28,15 @@ function ExperiencePreview() {
                 surface="glass"
                 href="/experience"
               >
-                View Full Experience
+                Professional Experience
+              </Button>
+
+              <Button
+                tone="secondary"
+                surface="glass"
+                href="/education"
+              >
+                Education & Certifications
               </Button>
             </div>
           </div>

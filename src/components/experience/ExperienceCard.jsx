@@ -5,10 +5,12 @@ function ExperienceCard({ experience }) {
     period,
     title,
     organization,
+    website,
     logo,
     image,
     headline,
     description,
+    highlights,
   } = experience
 
   return (
@@ -35,6 +37,25 @@ function ExperienceCard({ experience }) {
           <p className="experience-card__headline">{headline}</p>
 
           <p className="experience-card__description">{description}</p>
+
+          {highlights?.length > 0 && (
+            <ul className="experience-card__highlights">
+              {highlights.map((highlight, index) => (
+                <li key={index}>{highlight}</li>
+              ))}
+            </ul>
+          )}
+
+          {website && (
+            <a
+              className="experience-card__website"
+              href={website}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Visit Website ↗
+            </a>
+          )}
         </div>
       </div>
 

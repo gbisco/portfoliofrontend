@@ -2,12 +2,16 @@ import experience from '../../data/experience'
 import '../../styles/components/home/experience-timeline.css'
 
 function ExperienceTimeline() {
+  const timelineItems = experience
+    .filter((item) => item.timeline === true)
+    .sort((a, b) => a.timelineOrder - b.timelineOrder)
+
   return (
     <div className="experience-timeline">
       <div className="experience-timeline__line" />
 
       <div className="experience-timeline__items">
-        {experience.map((item, index) => (
+        {timelineItems.map((item, index) => (
           <article
             className={`experience-timeline__item ${
               index % 2 === 0

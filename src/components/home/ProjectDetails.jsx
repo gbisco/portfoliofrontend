@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import '../../styles/components/home/project-details.css'
 
 function ProjectDetails({ project }) {
@@ -8,9 +9,9 @@ function ProjectDetails({ project }) {
           {project.title}
         </h3>
 
-        <a
+        <Link
           className="project-details__link"
-          href={project.links.project}
+          to={`/projects#${project.id}`}
         >
           <span>View Project</span>
 
@@ -18,7 +19,7 @@ function ProjectDetails({ project }) {
             src="/icons/arrow-up-right-icon.svg"
             alt=""
           />
-        </a>
+        </Link>
       </div>
 
       <p className="project-details__description">

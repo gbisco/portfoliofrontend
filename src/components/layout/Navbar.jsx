@@ -1,3 +1,4 @@
+import { Link, useLocation } from 'react-router-dom'
 import { useEffect, useRef, useState } from 'react'
 import '../../styles/components/layout/navbar.css'
 
@@ -5,6 +6,7 @@ function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false)
   const [lightTheme, setLightTheme] = useState(false)
   const navbarRef = useRef(null)
+  const { pathname } = useLocation()
 
   useEffect(() => {
     function handleClickOutside(event) {
@@ -60,15 +62,37 @@ function Navbar() {
     setMenuOpen(false)
   }
 
+  function handleAboutClick() {
+    closeMenu()
+
+    if (pathname === '/') {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth',
+      })
+    }
+  }
+
+  function handleContactClick() {
+    closeMenu()
+
+    if (pathname === '/') {
+      document.getElementById('contact')?.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+      })
+    }
+  }
+
   return (
     <header
       className={`navbar ${lightTheme ? 'navbar--light' : 'navbar--dark'}`}
       ref={navbarRef}
     >
       <div className="content-container navbar__inner">
-        <a href="/" className="navbar__brand" onClick={closeMenu}>
+        <Link to="/" className="navbar__brand" onClick={handleAboutClick}>
           Gabriel
-        </a>
+        </Link>
 
         <button
           className="navbar__menu-button"
@@ -82,25 +106,25 @@ function Navbar() {
 
         {menuOpen && (
           <nav className="navbar__menu">
-            <a href="/#about" onClick={closeMenu}>
+            <Link to="/" onClick={handleAboutClick}>
               About
-            </a>
+            </Link>
 
-            <a href="/projects" onClick={closeMenu}>
+            <Link to="/projects" onClick={closeMenu}>
               Projects
-            </a>
+            </Link>
 
-            <a href="/#experience" onClick={closeMenu}>
+            <Link to="/experience" onClick={closeMenu}>
               Experience
-            </a>
+            </Link>
 
-            <a href="/#education" onClick={closeMenu}>
+            <Link to="/education" onClick={closeMenu}>
               Education
-            </a>
+            </Link>
 
-            <a href="/#contact" onClick={closeMenu}>
+            <Link to="/#contact" onClick={handleContactClick}>
               Contact
-            </a>
+            </Link>
           </nav>
         )}
       </div>
