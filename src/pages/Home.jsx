@@ -3,15 +3,20 @@ import FeaturedProjects from '../components/home/FeaturedProjects'
 import ExperiencePreview from '../components/home/ExperiencePreview'
 import ContactSection from '../components/home/ContactSection'
 
+import '../styles/pages/home.css'
 
 function Home() {
   return (
-    <>
-      <Hero />
-      <FeaturedProjects />
-      <ExperiencePreview />
-      <ContactSection />
-    </>
+    <main className="home">
+      <div className="home__background" />
+
+      <div className="home__content">
+        <Hero />
+        <FeaturedProjects />
+        <ExperiencePreview />
+        <ContactSection />
+      </div>
+    </main>
   )
 }
 

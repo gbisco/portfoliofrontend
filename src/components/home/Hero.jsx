@@ -15,15 +15,26 @@ function Hero() {
           </h1>
 
           <p className="hero__description">
-            I build practical AI, automation, and software systems.
+            Experienced in building AI-enabled applications and automation systems.
+            I implement end-to-end solutions that integrate AI, backend services,
+            cloud platforms, and existing operational systems, with hands-on
+            experience in access control, networking, deployment, and troubleshooting.
           </p>
 
           <div className="hero__actions">
-            <Button tone="primary" surface="solid">
+            <Button
+              tone="primary"
+              surface="solid"
+              href="/projects"
+            >
               View My Work
             </Button>
 
-            <Button tone="secondary" surface="glass">
+            <Button
+              tone="secondary"
+              surface="glass"
+              href="/#contact"
+            >
               Get in Touch
             </Button>
           </div>

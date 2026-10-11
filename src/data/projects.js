@@ -27,6 +27,7 @@ const projects = [
       'WebSockets',
       'Docker',
       'Gemini',
+      'Cloud Computing',
     ],
 
     link: 'https://prompble.com',
@@ -62,7 +63,7 @@ const projects = [
     ],
 
     // Add GitHub URL when available
-    link: null,
+    link: 'https://youtu.be/Y8KHyFbSjNI?si=86bHJ4NCu0zSnRM2',
 
     featured: true,
   },
@@ -123,6 +124,61 @@ const projects = [
 
     featured: false,
   },
+
+  {
+    id: 'nplm',
+
+    title: 'Neural Probabilistic Language Model',
+    tag: 'Deep Learning',
+
+    categories: ['ml', 'genai'],
+
+    description:
+        'Implemented and trained a neural probabilistic language model from scratch in PyTorch, building an end-to-end pipeline for text preprocessing, tokenization, training, and evaluation. Conducted experiments comparing model architectures, context lengths, and tokenization strategies using perplexity.',
+
+    image: '/images/projects/nplm-img.png',
+    imageFit: 'cover',
+
+    technologies: [
+        'Python',
+        'PyTorch',
+        'NLP',
+        'Hugging Face',
+        'Docker',
+        'BPE Tokenization',
+    ],
+
+    link: 'https://github.com/gbisco/PNL-model',
+
+    featured: false,
+    },
+
+    {
+        id: 'securebank',
+
+        title: 'SecureBank',
+        tag: 'Machine Learning Engineering',
+
+        categories: ['ml', 'software'],
+
+        description:
+            'Developed an end-to-end fraud detection system that processes financial transaction data, trains and evaluates machine learning models, and serves predictions through a Flask API. Includes feature engineering, model versioning, threshold optimization, and structured monitoring logs.',
+
+        image: '/images/projects/securebank-img.png',
+        imageFit: 'cover',
+
+        technologies: [
+            'Python',
+            'Scikit-learn',
+            'Pandas',
+            'Flask',
+            'Docker',
+            'Gradient Boosting',
+        ],
+
+        link: 'https://github.com/gbisco/securebank',
+        featured: false,
+    },
 ]
 
 export default projects
