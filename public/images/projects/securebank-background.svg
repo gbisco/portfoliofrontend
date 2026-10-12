@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" role="img" aria-labelledby="title">
+  <title id="title">SecureBank dark background</title>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#122A2A"/>
+      <stop offset=".54" stop-color="#0C181C"/>
+      <stop offset="1" stop-color="#050A0F"/>
+    </linearGradient>
+    <radialGradient id="glow" cx=".75" cy=".47" r=".7">
+      <stop offset="0" stop-color="#3A9E8C" stop-opacity=".24"/>
+      <stop offset="1" stop-color="#3A9E8C" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="grid" width="75" height="75" patternUnits="userSpaceOnUse">
+      <path d="M75 0H0V75" fill="none" stroke="#A4E0D3" stroke-opacity=".06" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="1600" height="900" fill="url(#bg)"/>
+  <rect width="1600" height="900" fill="url(#glow)"/>
+  <rect width="1600" height="900" fill="url(#grid)"/>
+  <path d="M570-180 1430 0 1750 690 890 1040 220 710Z" fill="#8ACFBF" fill-opacity=".035"/>
+  <path d="M960-100 1580 180 1630 900 1100 970 580 430Z" fill="#8ACFBF" fill-opacity=".035"/>
+  <path d="M900-80 1500 210M1130-20 1600 520M750 700 1450 80" stroke="#97E3D1" stroke-opacity=".12" stroke-width="2"/>
+  <g fill="none" stroke="#87D6C4" stroke-opacity=".20" stroke-width="3">
+    <path d="M950 620 1060 510 1180 570 1300 400 1440 455"/>
+    <path d="M1030 730 1150 690 1290 750 1430 620"/>
+  </g>
+  <g fill="#91E5D2" opacity=".35">
+    <circle cx="950" cy="620" r="6"/><circle cx="1060" cy="510" r="6"/>
+    <circle cx="1180" cy="570" r="6"/><circle cx="1300" cy="400" r="6"/>
+    <circle cx="1440" cy="455" r="6"/>
+  </g>
+</svg>

@@ -61,7 +61,7 @@
 .contact-section__eyebrow {
   margin: 0;
 
-  color: var(--color-text-muted);
+  color: var(--color-text-dark);
 
   font-size: var(--font-size-sm);
   font-weight: 600;
@@ -155,7 +155,7 @@
 .contact-section__label {
   margin: 0;
 
-  color: var(--color-text-muted);
+  color: var(--color-text-dark);
 
   font-size: clamp(
     var(--font-size-sm),

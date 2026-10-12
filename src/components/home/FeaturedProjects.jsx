@@ -125,11 +125,11 @@ function FeaturedProjects() {
             </div>
 
             <Button
-              tone="secondary"
-              surface="glass"
-              href="/projects"
-            >
-              View All Projects
+                tone="primary"
+                surface="solid"
+                href="/projects"
+                >
+                View All Projects
             </Button>
           </div>
 

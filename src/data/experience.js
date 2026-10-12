@@ -11,9 +11,9 @@ const experience = [
     organization: 'Washington State University',
 
     website: 'https://wsu.edu',
+    document: '/documents/education/wsu-diploma.pdf',
 
     logo: '/brands/wsu-logo.webp',
-    document: null,
     image: '/brands/wsu-img.jpg',
 
     headline: 'Undergraduate studies in Mechanical Engineering.',
@@ -79,7 +79,7 @@ const experience = [
     organization: 'Washington State',
 
     website: 'https://brpels.wa.gov',
-    document: null,
+    document: '/documents/education/eit-cert.pdf',
 
     logo: '/brands/eit-logo.svg',
 
@@ -98,7 +98,7 @@ const experience = [
     organization: 'University of Colorado Boulder',
 
     website: 'https://www.colorado.edu',
-    document: null,
+    document: '/documents/education/cu-cert.pdf',
 
     logo: '/brands/cu-logo.png',
 
@@ -118,7 +118,7 @@ const experience = [
     organization: 'MIT',
 
     website: 'https://professionalprogramsmit.com',
-    document: null,
+    document: '/documents/education/mit-cert.pdf',
 
     logo: '/brands/mit-logo.png',
     image: '/brands/mit-img.png',
@@ -171,7 +171,7 @@ const experience = [
     website: 'https://www.jhu.edu',
 
     logo: '/brands/jhu-logo.svg',
-    document: null,
+    document: '/documents/education/jhu-cert.pdf',
 
     headline:
       'Studied generative AI technologies and their applications in modern software systems.',

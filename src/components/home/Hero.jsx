@@ -24,14 +24,6 @@ function Hero() {
           <div className="hero__actions">
             <Button
               tone="primary"
-              surface="solid"
-              href="/projects"
-            >
-              View My Work
-            </Button>
-
-            <Button
-              tone="secondary"
               surface="glass"
               href="/#contact"
             >

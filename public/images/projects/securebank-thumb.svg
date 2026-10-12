@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
+  <title id="title">SecureBank</title>
+  <desc id="desc">Minimal bank pillars contained in a security shield.</desc>
+  <defs>
+    <linearGradient id="tile" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#203F3B"/>
+      <stop offset="1" stop-color="#0B1718"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#9FE3D0"/>
+      <stop offset="1" stop-color="#48AA94"/>
+    </linearGradient>
+  </defs>
+  <rect x="10" y="10" width="492" height="492" rx="112" fill="url(#tile)"/>
+  <rect x="11.5" y="11.5" width="489" height="489" rx="110.5" fill="none" stroke="#B3EDE0" stroke-opacity=".24" stroke-width="3"/>
+  <path d="M256 76 396 130v111c0 99-59 171-140 206-81-35-140-107-140-206V130L256 76Z" fill="#D8FFF5" fill-opacity=".035" stroke="url(#accent)" stroke-width="17" stroke-linejoin="round"/>
+  <path d="m165 209 91-56 91 56H165Z" fill="url(#accent)"/>
+  <g stroke="#D9FFF5" stroke-width="20" stroke-linecap="round">
+    <path d="M197 230v92M256 230v92M315 230v92"/>
+  </g>
+  <path d="M174 340h164M185 359h142" stroke="url(#accent)" stroke-width="15" stroke-linecap="round"/>
+</svg>

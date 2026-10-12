@@ -137,7 +137,7 @@ const projects = [
         'Implemented and trained a neural probabilistic language model from scratch in PyTorch, building an end-to-end pipeline for text preprocessing, tokenization, training, and evaluation. Conducted experiments comparing model architectures, context lengths, and tokenization strategies using perplexity.',
 
     image: '/images/projects/nplm-img.png',
-    imageFit: 'cover',
+    imageFit: 'contain',
 
     technologies: [
         'Python',
@@ -164,6 +164,9 @@ const projects = [
         description:
             'Developed an end-to-end fraud detection system that processes financial transaction data, trains and evaluates machine learning models, and serves predictions through a Flask API. Includes feature engineering, model versioning, threshold optimization, and structured monitoring logs.',
 
+        thumbnail: '/images/projects/securebank-thumb.svg',
+        background: '/images/projects/securebank-background.svg',
+
         image: '/images/projects/securebank-img.png',
         imageFit: 'cover',
 
@@ -177,7 +180,7 @@ const projects = [
         ],
 
         link: 'https://github.com/gbisco/securebank',
-        featured: false,
+        featured: true,
     },
 ]
 

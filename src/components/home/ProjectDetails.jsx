@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom'
 import '../../styles/components/home/project-details.css'
 
 function ProjectDetails({ project }) {
@@ -9,17 +8,21 @@ function ProjectDetails({ project }) {
           {project.title}
         </h3>
 
-        <Link
-          className="project-details__link"
-          to={`/projects#${project.id}`}
-        >
-          <span>View Project</span>
+        {project.link && (
+          <a
+            className="project-details__link"
+            href={project.link}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <span>View Project</span>
 
-          <img
-            src="/icons/arrow-up-right-icon.svg"
-            alt=""
-          />
-        </Link>
+            <img
+              src="/icons/arrow-up-right-icon.svg"
+              alt=""
+            />
+          </a>
+        )}
       </div>
 
       <p className="project-details__description">
