@@ -30,7 +30,7 @@
 .certifications-section__eyebrow {
   margin: 0;
 
-  color: #77777d;
+  color: var(--color-text-dark);
   font-size: var(--font-size-sm);
   font-weight: 600;
 
@@ -51,7 +51,7 @@
   max-width: 40rem;
   margin: 0;
 
-  color: #66666d;
+  color: var(--color-text-dark);
   font-size: var(--font-size-lg);
   line-height: 1.6;
 }

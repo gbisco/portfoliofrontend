@@ -137,7 +137,7 @@ const projects = [
         'Implemented and trained a neural probabilistic language model from scratch in PyTorch, building an end-to-end pipeline for text preprocessing, tokenization, training, and evaluation. Conducted experiments comparing model architectures, context lengths, and tokenization strategies using perplexity.',
 
     image: '/images/projects/nplm-img.png',
-    imageFit: 'contain',
+    imageFit: 'cover',
 
     technologies: [
         'Python',
