@@ -8,6 +8,8 @@ function Button({
   href,
   onClick,
   type = 'button',
+  disabled = false,
+  ...rest
 }) {
   const className = [
     'button',
@@ -18,9 +20,9 @@ function Button({
     .filter(Boolean)
     .join(' ')
 
-  if (href) {
+  if (href && !disabled) {
     return (
-      <a className={className} href={href}>
+      <a className={className} href={href} {...rest}>
         {children}
       </a>
     )
@@ -31,6 +33,8 @@ function Button({
       className={className}
       type={type}
       onClick={onClick}
+      disabled={disabled}
+      {...rest}
     >
       {children}
     </button>

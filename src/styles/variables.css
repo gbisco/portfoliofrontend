@@ -48,6 +48,10 @@
   --glass-dark-background: rgba(45, 45, 48, 0.42);
   --glass-dark-border: rgba(255, 255, 255, 0.18);
 
+  /* Opaque dark surfaces */
+  --surface-opaque-dark: rgba(20, 20, 22, 0.96);
+  --surface-opaque-dark-hover: rgba(20, 20, 22, 1);
+
   /* Glass behavior */
   --glass-blur: 28px;
   --glass-shadow: 0 12px 40px rgba(0, 0, 0, 0.28);
