@@ -1,34 +1,24 @@
-import Button from '../ui/Button'
-import { useGoogleAuth } from '../../auth/GoogleAuthContext'
+import ChatPanel from './ChatPanel'
 import GoogleSignInButton from './GoogleSignInButton'
 
-function ChatAuthView({ isOpen = false }) {
-  const {
-    errorMessage,
-    isSignedIn,
-    profile,
-    signOut,
-    status,
-  } = useGoogleAuth()
-
+function ChatAuthView({
+  error,
+  errorMessage,
+  isOpen = false,
+  isSending,
+  isSignedIn,
+  messages,
+  onSend,
+  status,
+}) {
   if (isSignedIn) {
-    const displayName = profile?.givenName || profile?.name
-
     return (
-      <>
-        <p className="chat-widget__welcome">
-          Welcome{displayName ? `, ${displayName}` : ''}. You are signed in
-          to the portfolio assistant. Chat will be available in a later update.
-        </p>
-
-        <Button
-          tone="secondary"
-          surface="glass"
-          onClick={signOut}
-        >
-          Sign out
-        </Button>
-      </>
+      <ChatPanel
+        error={error}
+        isSending={isSending}
+        messages={messages}
+        onSend={onSend}
+      />
     )
   }
 
@@ -48,7 +38,7 @@ function ChatAuthView({ isOpen = false }) {
       {status === 'ready' && isOpen && <GoogleSignInButton />}
 
       {errorMessage && (
-        <p className="chat-widget__status" role="alert">
+        <p className="chat-widget__status chat-widget__status--alert" role="alert">
           {errorMessage}
         </p>
       )}

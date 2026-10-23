@@ -135,9 +135,14 @@ export function GoogleAuthProvider({ children }) {
     }
   }, [clearExpiryTimer])
 
-  const signOut = useCallback(() => {
+  const signOut = useCallback((options = {}) => {
+    const nextMessage =
+      typeof options.message === 'string' && options.message.trim()
+        ? options.message.trim()
+        : null
+
     clearSession()
-    setErrorMessage(null)
+    setErrorMessage(nextMessage)
     setStatus(clientId && window.google?.accounts?.id ? 'ready' : 'unavailable')
 
     try {

@@ -1,4 +1,6 @@
 import { useEffect, useId, useLayoutEffect, useRef, useState } from 'react'
+import { useGoogleAuth } from '../../auth/GoogleAuthContext'
+import { useChatSession } from '../../chat/useChatSession'
 import ChatAuthView from './ChatAuthView'
 import '../../styles/components/chat/chat-widget.css'
 
@@ -22,6 +24,15 @@ function isGoogleIdentityEvent(event) {
 }
 
 function ChatWidget() {
+  const { errorMessage, status } = useGoogleAuth()
+  const {
+    error,
+    handleSignOut,
+    isSending,
+    isSignedIn,
+    messages,
+    sendMessage,
+  } = useChatSession()
   const [isOpen, setIsOpen] = useState(false)
   const widgetRef = useRef(null)
   const panelRef = useRef(null)
@@ -45,6 +56,39 @@ function ChatWidget() {
     }
 
     closeButtonRef.current?.focus()
+  }, [isOpen])
+
+  useEffect(() => {
+    const widget = widgetRef.current
+    const viewport = window.visualViewport
+
+    if (!isOpen || !widget) {
+      widget?.style.removeProperty('--chat-available-height')
+      widget?.style.removeProperty('--chat-keyboard-offset')
+      return undefined
+    }
+
+    function updateViewportMetrics() {
+      const height = viewport?.height ?? window.innerHeight
+      const offsetTop = viewport?.offsetTop ?? 0
+      const keyboardOffset = Math.max(0, window.innerHeight - height - offsetTop)
+
+      widget.style.setProperty('--chat-available-height', `${height}px`)
+      widget.style.setProperty('--chat-keyboard-offset', `${keyboardOffset}px`)
+    }
+
+    updateViewportMetrics()
+    viewport?.addEventListener('resize', updateViewportMetrics)
+    viewport?.addEventListener('scroll', updateViewportMetrics)
+    window.addEventListener('resize', updateViewportMetrics)
+
+    return () => {
+      viewport?.removeEventListener('resize', updateViewportMetrics)
+      viewport?.removeEventListener('scroll', updateViewportMetrics)
+      window.removeEventListener('resize', updateViewportMetrics)
+      widget.style.removeProperty('--chat-available-height')
+      widget.style.removeProperty('--chat-keyboard-offset')
+    }
   }, [isOpen])
 
   useEffect(() => {
@@ -96,11 +140,11 @@ function ChatWidget() {
       }
     }
 
-    document.addEventListener('mousedown', handlePointerDown)
+    document.addEventListener('pointerdown', handlePointerDown)
     document.addEventListener('keydown', handleKeyDown)
 
     return () => {
-      document.removeEventListener('mousedown', handlePointerDown)
+      document.removeEventListener('pointerdown', handlePointerDown)
       document.removeEventListener('keydown', handleKeyDown)
 
       const active = document.activeElement
@@ -133,25 +177,46 @@ function ChatWidget() {
             </p>
           </div>
 
-          <button
-            className="chat-widget__close"
-            type="button"
-            ref={closeButtonRef}
-            onClick={closePanel}
-            aria-label="Close chat"
-          >
-            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-              <path
-                d="m7 7 10 10M17 7 7 17"
-                stroke="currentColor"
-                strokeWidth="1.8"
-                strokeLinecap="round"
-              />
-            </svg>
-          </button>
+          <div className="chat-widget__header-actions">
+            {isSignedIn && (
+              <button
+                className="chat-widget__sign-out"
+                type="button"
+                onClick={handleSignOut}
+              >
+                Sign out
+              </button>
+            )}
+
+            <button
+              className="chat-widget__close"
+              type="button"
+              ref={closeButtonRef}
+              onClick={closePanel}
+              aria-label="Close chat"
+            >
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path
+                  d="m7 7 10 10M17 7 7 17"
+                  stroke="currentColor"
+                  strokeWidth="1.8"
+                  strokeLinecap="round"
+                />
+              </svg>
+            </button>
+          </div>
         </div>
 
-        <ChatAuthView isOpen={isOpen} />
+        <ChatAuthView
+          error={error}
+          errorMessage={errorMessage}
+          isOpen={isOpen}
+          isSending={isSending}
+          isSignedIn={isSignedIn}
+          messages={messages}
+          onSend={sendMessage}
+          status={status}
+        />
       </div>
 
       <button

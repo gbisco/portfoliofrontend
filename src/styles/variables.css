@@ -100,6 +100,15 @@
   --radius-xl: 2rem;
   --radius-pill: 999px;
 
+  /* Chat */
+  --chat-panel-width: 28.75rem;
+  --chat-panel-height: 43.75rem;
+  --chat-composer-max-height: 6.75rem;
+  --chat-user-bubble-max-width: 85%;
+  --chat-assistant-bubble-max-width: 95%;
+  --chat-bubble-radius: 1.15rem;
+  --chat-bubble-radius-tight: 0.4rem;
+
   /* Motion */
   --transition-fast: 150ms ease;
   --transition-normal: 250ms ease;
